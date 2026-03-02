@@ -1,0 +1,132 @@
+PROJECT TITLE:
+Search Log Analytics & Shuttle Optimization Engine
+
+OBJECTIVE:
+Build a Python tool that analyzes transportation search logs and produces business insights for route optimization and demand prediction.
+
+INPUT:
+JSON file containing search records (example structure provided).
+
+PROJECT REQUIREMENTS:
+
+PART 1 — Data Parsing & Cleaning
+---------------------------------
+1. Load the JSON file.
+2. Validate required fields:
+   - request.time
+   - request.requestTime
+   - request.pax.total
+   - from.address
+   - to.address
+   - response.shuttle.available
+3. Handle missing or corrupted entries gracefully.
+4. Convert ISO timestamps into Python datetime objects.
+5. Calculate:
+   - Lead time (requestTime - time)
+   - Request hour distribution
+   - Route extraction (example: "BVA->DIS")
+
+OUTPUT:
+Cleaned structured dataset ready for analytics.
+
+
+PART 2 — Analytics Engine
+--------------------------
+Generate the following metrics:
+
+1. Most requested routes (Top 5)
+2. Average passengers per search
+3. Percentage of searches with shuttle available
+4. Demand by hour of day
+5. Country distribution of users
+6. Average booking lead time in hours
+7. Conversion potential score:
+   - Define your own scoring logic based on:
+     * pax
+     * shuttle availability
+     * lead time
+
+Export results to:
+- CSV summary file
+- JSON report file
+
+
+PART 3 — Route Demand Intelligence
+-----------------------------------
+Create a function that:
+
+- Detects high-demand routes
+- Detects routes with shuttle availability gaps
+- Suggests:
+    * Add new shuttle time
+    * Increase capacity
+    * Push VTC promotion
+
+This part evaluates reasoning and business logic.
+
+
+PART 4 — Command Line Interface
+--------------------------------
+Create a CLI tool:
+
+Example:
+python analyzer.py --route BVA->DIS --from 2025-09-01 --to 2025-10-01
+
+Output:
+- Total searches
+- Average pax
+- Shuttle availability rate
+- Peak hours
+
+
+BONUS (Optional – Advanced)
+----------------------------
+1. Build a small REST API using FastAPI.
+2. Add caching.
+3. Add unit tests (pytest).
+4. Implement anomaly detection:
+   - Sudden spike in searches
+   - Unusual country traffic
+
+
+EVALUATION CRITERIA
+--------------------
+1. Code structure (clean modules)
+2. Proper use of classes/functions
+3. Error handling
+4. Time complexity awareness
+5. Thinking quality in optimization logic
+6. Unit testing
+7. Documentation
+
+
+EXPECTED SKILLS TESTED
+-----------------------
+- JSON parsing
+- datetime manipulation
+- list/dict comprehension
+- aggregation logic
+- sorting & grouping
+- basic statistics
+- CLI argument parsing (argparse)
+- optional API development
+
+
+DELIVERABLES
+-------------
+- Git repository
+- README explaining logic
+- analyzer.py
+- tests/
+- output samples
+
+
+ESTIMATED DIFFICULTY:
+Medium to Hard
+
+ESTIMATED TIME:
+2–3 days
+
+
+GOAL:
+Simulate a real-world transportation analytics system based on Ozeroute-style search data.
